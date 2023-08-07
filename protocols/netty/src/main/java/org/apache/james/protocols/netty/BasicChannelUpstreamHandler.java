@@ -238,7 +238,9 @@ public class BasicChannelUpstreamHandler extends SimpleChannelUpstreamHandler {
                     transport.writeResponse(Response.DISCONNECT, session);
                 }
                 if (e.getCause() instanceof ClosedChannelException) {
-                    LOGGER.info("Channel closed before we could send in flight messages to the users (ClosedChannelException): {}", e.getCause().getMessage());
+                    LOGGER.info("Channel closed before we could send in flight messages to the users (ClosedChannelException): {} {}",
+                        e.getCause().getMessage(),
+                        session.getRemoteAddress().getAddress().getHostAddress());
                 } else {
                     LOGGER.error("Unable to process request", e.getCause());
                 }

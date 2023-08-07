@@ -7,3 +7,11 @@ dockerfiles/run/**/glowroot
 .m2
 test-run.log
 build
+
+# Eclipse and Mac OS
+.metadata
+.settings
+.classpath
+.project
+.DS_Store
+

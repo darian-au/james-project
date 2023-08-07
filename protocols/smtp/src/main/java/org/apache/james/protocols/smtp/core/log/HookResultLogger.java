@@ -42,15 +42,16 @@ public class HookResultLogger implements HookResultHook {
             || result.isDisconnected();
 
         if (requiresInfoLogging) {
-            LOGGER.info("{}: result= ({} {})", hook.getClass().getName(),
+            LOGGER.info("{}: result= ({} {}) {}", hook.getClass().getName(),
                 result.getAction(),
-                result.getConnectionStatus());
+                result.getConnectionStatus(),
+                session.getRemoteAddress().getAddress().getHostAddress());
         } else {
-            LOGGER.debug("{}: result= ({} {})", hook.getClass().getName(),
+            LOGGER.debug("{}: result= ({} {}) {}", hook.getClass().getName(),
                 result.getAction(),
-                result.getConnectionStatus());
+                result.getConnectionStatus(),
+                session.getRemoteAddress().getAddress().getHostAddress());
         }
         return hResult;
     }
-
 }
